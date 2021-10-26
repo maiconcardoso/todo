@@ -23,6 +23,7 @@ public class Todo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+    
     private String description;
     private LocalDateTime finishedDate;
     private Boolean finished = false;
