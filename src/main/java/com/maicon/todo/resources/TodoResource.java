@@ -1,5 +1,7 @@
 package com.maicon.todo.resources;
 
+import java.util.List;
+
 import com.maicon.todo.domain.Todo;
 import com.maicon.todo.services.TodoService;
 
@@ -22,5 +24,17 @@ public class TodoResource {
     public ResponseEntity<Todo> findById(@PathVariable Integer id) {
         Todo todoById = service.findById(id);
         return ResponseEntity.status(HttpStatus.OK).body(todoById);
+    }
+
+    @GetMapping(value = "/open")
+    public ResponseEntity<List<Todo>> listOpen() {
+        List<Todo> listAllOpen = service.findAllOpen();
+        return ResponseEntity.status(HttpStatus.OK).body(listAllOpen);
+    }
+
+    @GetMapping(value = "closed")
+    public ResponseEntity<List<Todo>> listClosed() {
+        List<Todo> listAllClosed = service.findAllClosed();
+        return ResponseEntity.status(HttpStatus.OK).body(listAllClosed);
     }
 }

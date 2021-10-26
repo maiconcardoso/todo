@@ -1,5 +1,6 @@
 package com.maicon.todo.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.maicon.todo.domain.Todo;
@@ -17,5 +18,15 @@ public class TodoService {
     public Todo findById(Integer id) {
         Optional<Todo> todoById = repository.findById(id);
         return todoById.orElse(null);
+    }
+
+    public List<Todo> findAllOpen() {
+        List<Todo> listOpen = repository.findAllOpen();
+        return listOpen;
+    }
+
+    public List<Todo> findAllClosed() {
+        List<Todo> listClosed = repository.findAllClosed();
+        return listClosed;
     }
 }
