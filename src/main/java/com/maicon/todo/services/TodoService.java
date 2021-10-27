@@ -15,6 +15,10 @@ public class TodoService {
     @Autowired
     private TodoRepository repository;
 
+    public List<Todo> findAll() {
+        return repository.findAll();
+    }
+
     public Todo findById(Integer id) {
         Optional<Todo> todoById = repository.findById(id);
         return todoById.orElse(null);
@@ -29,4 +33,15 @@ public class TodoService {
         List<Todo> listClosed = repository.findAllClosed();
         return listClosed;
     }
+
+    public Todo save(Todo todo) {
+        return repository.save(todo);
+    }
+
+    public void delete(Integer id) {
+        Todo todoById = repository.findById(id).get();
+        repository.delete(todoById);
+    }
+
+
 }
