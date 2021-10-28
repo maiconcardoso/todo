@@ -39,9 +39,6 @@ public class TodoService {
     }
 
     public void delete(Integer id) {
-        Todo todoById = repository.findById(id).get();
-        repository.delete(todoById);
+        repository.deleteById(id);
     }
-
-
 }
