@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.maicon.todo.domain.Todo;
 import com.maicon.todo.repositories.TodoRepository;
+import com.maicon.todo.services.exceptions.ObjectNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class TodoService {
 
     public Todo findById(Integer id) {
         Optional<Todo> todoById = repository.findById(id);
-        return todoById.orElse(null);
+        return todoById.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
     public List<Todo> findAllOpen() {
