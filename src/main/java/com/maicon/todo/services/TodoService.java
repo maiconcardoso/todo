@@ -42,4 +42,14 @@ public class TodoService {
     public void delete(Integer id) {
         repository.deleteById(id);
     }
+
+    public Todo update(Integer id, Todo todo) {
+        Todo todoById = repository.findById(id).get();
+        Todo todoForUpdated = todoById;
+        todoForUpdated.setTitle(todo.getTitle());
+        todoForUpdated.setDescription(todo.getDescription());
+        todoForUpdated.setFinished(todo.getFinished());
+        todoForUpdated.setFinishedDate(todo.getFinishedDate());
+        return repository.save(todoForUpdated);
+    }
 }
